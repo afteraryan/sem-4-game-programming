@@ -8,35 +8,35 @@ struct Points
 class RectangleOverlap
 {
     public:
-    bool OverlapCheck(Points l1, Points r1, Points l2, Points r2)//Taking Top Left and Bottom Right points 
+    bool OverlapCheck(Points tl1, Points br1, Points tl2, Points br2)//Taking Top Left and Bottom Right points 
                                                                  //of both triangles
     {
         
         //if rectangles are on top of each other
-        if(r1.y>=l2.y || r2.y>=l1.y)
+        if(br1.y>=tl2.y || br2.y>=tl1.y)
             return false;
         //if rectanles are side by side
-        if(l1.x>=r2.x || l2.x>=r1.x)
+        if(tl1.x>=br2.x || tl2.x>=br1.x)
             return false;
         return true;
     }
 };
 int main()
 {
-    Points l1,r1,l2,r2;
+    Points tl1,br1,tl2,br2;
     cout<<"Input x and y coordinates for Top Left points of Rectangle 1: ";
-    cin>>l1.x>>l1.y;
+    cin>>tl1.x>>tl1.y;
     cout<<"Input x and y coordinates for Bottom Right points of Rectangle 1: ";
-    cin>>r1.x>>r1.y;
+    cin>>br1.x>>br1.y;
     cout<<"Input x and y coordinates for Top Left points of Rectangle 2: ";
-    cin>>l2.x>>l2.y;
+    cin>>tl2.x>>tl2.y;
     cout<<"Input x and y coordinates for Bottom Right points of Rectangle 2: ";
-    cin>>r2.x>>r2.y;
+    cin>>br2.x>>br2.y;
 
     RectangleOverlap obj;
 
     cout<<"\nDo Rectangles Overlap?\n";
-    if(obj.OverlapCheck(l1,r1,l2,r2)==0)
+    if(obj.OverlapCheck(tl1,br1,tl2,br2)==0)
         cout<<"False";
     else
         cout<<"True";
